@@ -6,5 +6,5 @@ node_modules/
 .DS_Store
 .idea/
 .vscode/
-
+.php-cs-fixer.cache
 .phpunit.result.cache
