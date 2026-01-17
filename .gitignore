@@ -1,0 +1,10 @@
+phpunit.xml
+vendor
+.env
+.env.local
+node_modules/
+.DS_Store
+.idea/
+.vscode/
+
+.phpunit.result.cache
