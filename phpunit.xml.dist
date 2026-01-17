@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+        bootstrap="vendor/autoload.php"
+        colors="true"
+        executionOrder="depends,defects"
+        cacheResult="false"
+        stopOnFailure="false"
+>
+    <testsuites>
+        <testsuite name="Camoo Laravel Payment Test Suite">
+            <directory suffix="Test.php">./tests</directory>
+        </testsuite>
+    </testsuites>
+
+    <coverage processUncoveredFiles="true">
+        <include>
+            <directory suffix=".php">./src</directory>
+        </include>
+    </coverage>
+
+    <php>
+        <!-- Required for Orchestra Testbench -->
+        <env name="APP_ENV" value="testing"/>
+        <env name="APP_KEY" value="base64:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="/>
+
+        <!-- Avoid accidental external calls -->
+        <env name="CAMOO_PAYMENT_API_KEY" value="test_key"/>
+        <env name="CAMOO_PAYMENT_API_SECRET" value="test_secret"/>
+
+        <!-- Laravel defaults -->
+        <env name="CACHE_DRIVER" value="array"/>
+        <env name="QUEUE_CONNECTION" value="sync"/>
+        <env name="SESSION_DRIVER" value="array"/>
+        <env name="MAIL_MAILER" value="array"/>
+    </php>
+</phpunit>

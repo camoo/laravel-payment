@@ -19,13 +19,13 @@ This package provides a clean, expressive, and testable API for handling **casho
 ## Documentation & Resources
 
 * 📘 **OpenAPI Documentation**
-  [https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/camoo/payment-api/main/openapi.yaml](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/camoo/payment-api/main/openapi.yaml)
+  [read](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/camoo/payment-api/main/openapi.yaml)
 
 * 📦 **Postman Collection**
-  [https://raw.githubusercontent.com/camoo/payment-api/main/docs/postman/Camoo-Payment-API.postman_collection.json](https://raw.githubusercontent.com/camoo/payment-api/main/docs/postman/Camoo-Payment-API.postman_collection.json)
+  [download](https://raw.githubusercontent.com/camoo/payment-api/main/docs/postman/Camoo-Payment-API.postman_collection.json)
 
 * 🧩 **Core PHP SDK**
-  [https://github.com/camoo/payment-api](https://github.com/camoo/payment-api)
+  [repo](https://github.com/camoo/payment-api)
 
 ---
 
