@@ -11,6 +11,11 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class VerifyCamooWebhookSignature
 {
+    /**
+     * Handle an incoming request.
+     *
+     * @param Closure(Request): (Response) $next
+     */
     public function handle(Request $request, Closure $next): Response
     {
         if (!config('camoo-payment.webhooks.enabled', true)) {

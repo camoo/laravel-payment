@@ -1,7 +1,8 @@
 {
-  "name": "camoo/laravel-payment",
+  "name": "camoo/laravel-mobile-money-payment",
   "description": "Official Laravel integration for the Camoo Payment API, providing service providers, facades, webhook handling, and a Cashier-like developer experience.",
   "type": "library",
+  "minimum-stability": "stable",
   "license": "MIT",
   "keywords": [
     "laravel",
@@ -22,14 +23,13 @@
   ],
   "require": {
     "php": "^8.1",
-    "illuminate/support": "^9.0|^10.0|^11.0",
-    "illuminate/http": "^9.0|^10.0|^11.0",
     "illuminate/contracts": "^9.0|^10.0|^11.0",
+    "illuminate/http": "^9.0|^10.0|^11.0",
     "camoo/payment-api": "^1.0"
   },
   "require-dev": {
     "orchestra/testbench": "^7.0|^8.0|^9.0",
-    "phpunit/phpunit": "^10.0|^11.0"
+    "phpunit/phpunit": "^11.0"
   },
   "autoload": {
     "psr-4": {
@@ -57,6 +57,9 @@
   "support": {
     "issues": "https://github.com/camoo/laravel-payment/issues",
     "source": "https://github.com/camoo/laravel-payment"
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit --configuration phpunit.xml.dist --colors=always"
   }
 
 }

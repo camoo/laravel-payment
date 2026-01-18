@@ -42,7 +42,7 @@ This package provides a clean, expressive, and testable API for handling **casho
 Install the package via Composer:
 
 ```bash
-composer require camoo/payment-api
+composer require camoo/laravel-mobile-money-payment
 ```
 
 Publish the configuration file:

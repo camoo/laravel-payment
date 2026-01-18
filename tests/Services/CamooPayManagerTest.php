@@ -21,6 +21,7 @@ use PHPUnit\Framework\Attributes\Group;
 final class CamooPayManagerTest extends TestCase
 {
     private Dispatcher $events;
+
     private CamooPayManager $manager;
 
     protected function setUp(): void
@@ -82,9 +83,7 @@ final class CamooPayManagerTest extends TestCase
         $this->manager->emitPaymentEvents($payment);
     }
 
-    /**
-     * Helper to create a PaymentResource mock with a given status.
-     */
+    /** Helper to create a PaymentResource mock with a given status. */
     private function paymentWithStatus(string $status): PaymentResource
     {
         $payment = $this->createMock(PaymentResource::class);
