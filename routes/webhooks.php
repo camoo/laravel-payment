@@ -6,7 +6,7 @@ use Camoo\LaravelPayment\Http\Controllers\WebhookController;
 use Camoo\LaravelPayment\Http\Middleware\VerifyCamooWebhookSignature;
 use Illuminate\Support\Facades\Route;
 
-Route::post(
+Route::get(
     '/' . trim((string)config('camoo-payment.webhooks.route_prefix', 'webhooks/camoo'), '/'),
     WebhookController::class
 )->middleware([

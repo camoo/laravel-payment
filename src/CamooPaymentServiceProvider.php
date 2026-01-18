@@ -40,10 +40,7 @@ final class CamooPaymentServiceProvider extends ServiceProvider
 
         // Webhook signature verifier
         $this->app->bind(WebhookSignatureVerifier::class, fn () => new HmacSha256Verifier(
-            secret: (string)config('camoo-payment.webhooks.secret', ''),
-            signatureHeader: (string)config('camoo-payment.webhooks.signature_header', 'X-Camoo-Signature'),
-            timestampHeader: (string)config('camoo-payment.webhooks.timestamp_header', 'X-Camoo-Timestamp'),
-            toleranceSeconds: (int)config('camoo-payment.webhooks.tolerance_seconds', 300),
+            secret: (string)config('camoo-payment.api_secret')
         ));
     }
 

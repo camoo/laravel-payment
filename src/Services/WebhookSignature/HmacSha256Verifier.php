@@ -11,43 +11,37 @@ final class HmacSha256Verifier implements WebhookSignatureVerifier
 {
     public function __construct(
         private readonly string $secret,
-        private readonly string $signatureHeader,
-        private readonly string $timestampHeader,
-        private readonly int $toleranceSeconds
     ) {
     }
 
     public function verify(Request $request): bool
     {
-        // If not configured, do not accidentally "verify" as true.
-        if ($this->secret === '') {
+        $signature = $request->query('sig');
+
+        if (!$signature || !$this->secret) {
             return false;
         }
 
-        $signature = (string)$request->headers->get($this->signatureHeader, '');
-        $timestamp = (string)$request->headers->get($this->timestampHeader, '');
+        // Collect query params except sig
+        $params = $request->query();
+        unset($params['sig']);
 
-        if ($signature === '' || $timestamp === '') {
-            return false;
+        // Normalize status (case-insensitive)
+        if (isset($params['status'])) {
+            $params['status'] = strtoupper((string)$params['status']);
         }
 
-        if (!ctype_digit($timestamp)) {
-            return false;
-        }
+        ksort($params);
 
-        $ts = (int)$timestamp;
-        if (abs(time() - $ts) > $this->toleranceSeconds) {
-            return false;
-        }
+        $queryString = http_build_query(
+            $params,
+            '',
+            '&',
+            PHP_QUERY_RFC3986
+        );
 
-        $payload = (string)$request->getContent();
+        $expected = hash_hmac('sha256', $queryString, $this->secret);
 
-        // Proposed canonical string:
-        // "{timestamp}.{raw_body}"
-        $signed = $timestamp . '.' . $payload;
-
-        $expected = hash_hmac('sha256', $signed, $this->secret);
-
-        return hash_equals($expected, $signature);
+        return hash_equals($expected, (string)$signature);
     }
 }

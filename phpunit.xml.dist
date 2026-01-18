@@ -7,6 +7,9 @@
         executionOrder="depends,defects"
         cacheResult="false"
         stopOnFailure="false"
+        failOnDeprecation="false"
+        failOnWarning="false"
+        failOnRisky="false"
 >
     <testsuites>
         <testsuite name="Camoo Laravel Payment Test Suite">
@@ -14,22 +17,15 @@
         </testsuite>
     </testsuites>
 
-    <coverage processUncoveredFiles="true">
-        <include>
-            <directory suffix=".php">./src</directory>
-        </include>
-    </coverage>
-
     <php>
-        <!-- Required for Orchestra Testbench -->
         <env name="APP_ENV" value="testing"/>
         <env name="APP_KEY" value="base64:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="/>
 
-        <!-- Avoid accidental external calls -->
+        <env name="CAMOO_API_KEY" value="test_key"/>
+        <env name="CAMOO_API_SECRET" value="test_secret"/>
         <env name="CAMOO_PAYMENT_API_KEY" value="test_key"/>
         <env name="CAMOO_PAYMENT_API_SECRET" value="test_secret"/>
 
-        <!-- Laravel defaults -->
         <env name="CACHE_DRIVER" value="array"/>
         <env name="QUEUE_CONNECTION" value="sync"/>
         <env name="SESSION_DRIVER" value="array"/>

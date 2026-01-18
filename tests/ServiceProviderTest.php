@@ -7,13 +7,13 @@ use Orchestra\Testbench\TestCase;
 
 final class ServiceProviderTest extends TestCase
 {
+    public function testServiceProviderBoots(): void
+    {
+        $this->assertTrue(true);
+    }
+
     protected function getPackageProviders($app): array
     {
         return [CamooPaymentServiceProvider::class];
-    }
-
-    public function test_service_provider_boots(): void
-    {
-        $this->assertTrue(true);
     }
 }
